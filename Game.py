@@ -8,6 +8,7 @@ import Enemy
 import Hero
 import dbsetup
 from texttools import *
+from vfx import bcolors, BarGFX
 
 
 # game class makes the game work instantiates all other classes at some point.
@@ -713,11 +714,16 @@ class Game:
     def printadversaries(self, datawidth):
         self.textwidth = datawidth
         centerprint(lr_justify('[HERO]', '[ENEMY]', self.textwidth))
+        centerprint(lr_justify(str(self.ourhero.get_hp_bar()),
+                               str(self.ourenemy.get_hp_bar()),
+                               int(self.textwidth + self.ourhero.get_hp_bar_muted_char_len())))
         centerprint(lr_justify(self.ourhero.name, self.ourenemy.name, self.textwidth))
         centerprint(lr_justify(str('lvl: ' + str(self.ourhero.level)),
                                str('lvl: ' + str(self.ourenemy.level)),self.textwidth))
+
         centerprint(lr_justify(str('HP: ' + str(self.ourhero.hp) + '/' + str(self.ourhero.maxhp)),
                          str('HP: ' + str(self.ourenemy.hp) + '/' + str(self.ourenemy.maxhp)), self.textwidth))
+
         centerprint(lr_justify(str('XP: ' + str(self.ourhero.xp) + '/' + str(self.ourhero.nextlevel)),
                          str('XP drop: ' + str(self.ourenemy.xp)),self.textwidth))
 

@@ -7,6 +7,7 @@ import Shield
 import Weapon
 import dbsetup
 from texttools import *
+from vfx import bcolors, BarGFX
 
 
 class Hero:
@@ -325,3 +326,13 @@ class Hero:
     def applyequip(self):
         self.atk = int(self.baseatk + self.ourweapon.baseatk)
         self.defn = int(self.basedef + self.ourarmor.defn + self.ourshield.defn)
+
+
+    def get_hp_bar(self):
+        hp_bar = BarGFX(20, bcolors.OKGREEN, self.hp, self.maxhp)
+        return hp_bar.draw_bar()
+
+    def get_hp_bar_muted_char_len(self):
+        hp_bar = BarGFX(20, bcolors.OKGREEN, self.hp, self.maxhp)
+        hp_bar_muted_char_length = len(hp_bar.draw_bar()) - len(hp_bar.draw_bar_plain())
+        return hp_bar_muted_char_length

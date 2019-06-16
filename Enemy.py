@@ -1,4 +1,5 @@
 import Game
+from vfx import bcolors, BarGFX
 
 
 class Enemy:
@@ -67,6 +68,10 @@ class Enemy:
         print('\tMaxHP:\t' + str(self.maxhp))
         print('\tHP:\t\t' + str(self.hp))
 
+    def get_hp_bar(self):
+        hp_bar = BarGFX(10, bcolors.FAIL, self.hp, self.maxhp)
+        return hp_bar.draw_bar()
+
     def datadict(self):
         return {'Level': str(self.level),
                 'Attack': str(self.atk),
@@ -75,3 +80,6 @@ class Enemy:
                 'MaxHP': str(self.maxhp),
                 'HP': str(self.hp)
                 }
+
+
+
