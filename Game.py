@@ -714,9 +714,10 @@ class Game:
     def printadversaries(self, datawidth):
         self.textwidth = datawidth
         centerprint(lr_justify('[HERO]', '[ENEMY]', self.textwidth))
-        centerprint(lr_justify(str(self.ourhero.get_hp_bar()),
-                               str(self.ourenemy.get_hp_bar()),
-                               int(self.textwidth + self.ourhero.get_hp_bar_muted_char_len())))
+        #   TODO: calculate correct textwidth modification to use color
+        centerprint(lr_justify(str(self.ourhero.hp_bar.draw_bar_plain()),
+                               str(self.ourenemy.hp_bar_short.draw_bar_plain()),
+                               int(self.textwidth)))
         centerprint(lr_justify(self.ourhero.name, self.ourenemy.name, self.textwidth))
         centerprint(lr_justify(str('lvl: ' + str(self.ourhero.level)),
                                str('lvl: ' + str(self.ourenemy.level)),self.textwidth))

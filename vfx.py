@@ -48,4 +48,4 @@ class BarGFX:
         return ("|" + hp_bar + "|")
 
     def get_muted_char_len(self):
-        return len(bcolors.ENDC) + len(bcolors.OKGREEN)
+        return len(self.draw_bar()) - len(self.draw_bar_plain())

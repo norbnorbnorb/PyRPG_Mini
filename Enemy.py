@@ -68,9 +68,15 @@ class Enemy:
         print('\tMaxHP:\t' + str(self.maxhp))
         print('\tHP:\t\t' + str(self.hp))
 
-    def get_hp_bar(self):
+    @property
+    def hp_bar(self):
+        hp_bar = BarGFX(20, bcolors.FAIL, self.hp, self.maxhp)
+        return hp_bar
+
+    @property
+    def hp_bar_short(self):
         hp_bar = BarGFX(10, bcolors.FAIL, self.hp, self.maxhp)
-        return hp_bar.draw_bar()
+        return hp_bar
 
     def datadict(self):
         return {'Level': str(self.level),
